@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/educational-support-platform",
+            "outputPath": "dist/educational-support-platform/browser",
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": [
