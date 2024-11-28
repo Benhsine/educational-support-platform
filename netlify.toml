@@ -1,6 +1,9 @@
 [build]
-  command = "npm run build"
-  publish = "dist/educational-support-platform/browser"
+  base = "educational-support-platform"
+  command = "npm run build:prod"
+  publish = "dist/browser"
 
-[[plugins]]
-  package = "@netlify/angular-runtime"
+  [[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
