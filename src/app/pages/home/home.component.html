@@ -1,0 +1,25 @@
+<!-- src/app/pages/home/home.component.html -->
+<div class="container mt-5">
+    <div class="jumbotron text-center">
+      <h1 class="display-4">Plateforme de Soutien Scolaire</h1>
+      <p class="lead">Ressources éducatives et outils d'apprentissage</p>
+    </div>
+  
+    <section class="featured-courses mt-4">
+      <h2 class="mb-3">Cours Populaires</h2>
+      <div class="row">
+        <div *ngFor="let course of popularCourses" class="col-md-4 mb-3">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">{{ course.title || 'Cours par Défaut' }}</h5>
+              <p class="card-text">{{ course.description || 'Description du cours' }}</p>
+              <a href="#" class="btn btn-primary">Commencer</a>
+            </div>
+          </div>
+        </div>
+        <div *ngIf="popularCourses.length === 0" class="col-12">
+          <p class="text-center">Aucun cours disponible pour le moment</p>
+        </div>
+      </div>
+    </section>
+  </div>
