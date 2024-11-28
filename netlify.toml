@@ -1,9 +1,8 @@
 [build]
-  base = "educational-support-platform"
-  command = "npm run build:prod"
-  publish = "dist/browser"
+  command = "ng build"
+  publish = "dist/educational-support-platform/browser"
 
-  [[redirects]]
+[[redirects]]
   from = "/*"
   to = "/index.html"
   status = 200
