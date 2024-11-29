@@ -11,6 +11,7 @@ import { AuthService } from '../../services/auth.service';
 })
 export class NavbarComponent {
   role: string | null = null;
+  isLoggedIn: boolean = false;
 
   constructor(private authService: AuthService) {
     // Get the current user's role
@@ -20,5 +21,13 @@ export class NavbarComponent {
 
   logout() {
     this.authService.logout();
+    this.isLoggedIn = false;
+  }
+   // You can fetch this from your authentication service
+
+
+  // Simulate logout
+  login() {
+    this.isLoggedIn = true;
   }
 }

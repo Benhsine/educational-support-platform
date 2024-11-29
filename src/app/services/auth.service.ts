@@ -64,6 +64,7 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class AuthService {
   private userSubject = new BehaviorSubject<any>(null);
+  isLoggedIn: boolean = false; 
   user$ = this.userSubject.asObservable();
 
   constructor(private router: Router) {
@@ -79,11 +80,13 @@ export class AuthService {
     // Check if running in browser
     if (typeof window !== 'undefined') {
       if (username === 'student' && password === 'student') {
+        this.isLoggedIn = true;
         const user = { role: 'student' };
         localStorage.setItem('user', JSON.stringify(user));
         this.userSubject.next(user);
         return true;
       } else if (username === 'professor' && password === 'professor') {
+        this.isLoggedIn = true;
         const user = { role: 'professor' };
         localStorage.setItem('user', JSON.stringify(user));
         this.userSubject.next(user);
@@ -95,6 +98,7 @@ export class AuthService {
 
   logout() {
     if (typeof window !== 'undefined') {
+      this.isLoggedIn = false;
       localStorage.removeItem('user');
       this.userSubject.next(null);
       this.router.navigate(['/login']);
