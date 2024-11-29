@@ -1,48 +1,50 @@
-<!-- src/app/shared/navbar/navbar.component.html -->
+
+<!--
+ src/app/shared/navbar/navbar.component.html 
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary shadow-sm">
     <div class="container">
-      <!-- Logo et titre -->
+      
       <a class="navbar-brand fw-bold" routerLink="/">
         Soutien Scolaire
       </a>
   
-      <!-- Bouton pour navigation mobile -->
+      
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
   
-      <!-- Liens de navigation -->
+      
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav ms-auto">
-          <!-- Lien pour les cours -->
+          
           <li class="nav-item">
             <a class="nav-link" routerLink="/courses" routerLinkActive="active">
               <i class="bi bi-book"></i> Cours
             </a>
           </li>
   
-          <!-- Lien pour les quiz -->
+          
           <li class="nav-item">
             <a class="nav-link" routerLink="/quizzes" routerLinkActive="active">
               <i class="bi bi-question-circle"></i> Quiz
             </a>
           </li>
   
-          <!-- Lien pour le tableau de bord -->
+         
           <li class="nav-item">
             <a class="nav-link" routerLink="/dashboard" routerLinkActive="active">
               <i class="bi bi-bar-chart"></i> Tableau de Bord
             </a>
           </li>
   
-          <!-- Lien pour le profil -->
+          
           <li class="nav-item">
             <a class="nav-link" routerLink="/profile" routerLinkActive="active">
               <i class="bi bi-person-circle"></i> Profil
             </a>
           </li>
   
-          <!-- Menu déroulant (exemple pour des paramètres ou autres liens) -->
+         
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               <i class="bi bi-gear"></i> Paramètres
@@ -58,4 +60,81 @@
       </div>
     </div>
   </nav>
+-->
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary shadow-sm">
+    <div class="container">
+      <a class="navbar-brand fw-bold" routerLink="/">
+        Soutien Scolaire
+      </a>
+      
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <!-- Student-specific navigation -->
+          <ng-container *ngIf="role === 'student'">
+            <li class="nav-item">
+              <a class="nav-link" routerLink="/courses" routerLinkActive="active">
+                <i class="bi bi-book"></i> Cours
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" routerLink="/quizzes" routerLinkActive="active">
+                <i class="bi bi-question-circle"></i> Quiz
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" routerLink="/dashboard" routerLinkActive="active">
+                <i class="bi bi-bar-chart"></i> Tableau de Bord
+              </a>
+            </li>
+          </ng-container>
   
+          <!-- Professor-specific navigation -->
+          <ng-container *ngIf="role === 'professor'">
+            <li class="nav-item">
+              <a class="nav-link" routerLink="/professor/manage-courses" routerLinkActive="active">
+                <i class="bi bi-book-half"></i> Gérer Cours
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" routerLink="/professor/manage-quizzes" routerLinkActive="active">
+                <i class="bi bi-clipboard-check"></i> Gérer Quiz
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" routerLink="/professor/professor-dashboard" routerLinkActive="active">
+                <i class="bi bi-bar-chart"></i> Tableau de Bord
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" routerLink="/professor/manage-resources" routerLinkActive="active">
+                <i class="bi bi-folder"></i> Ressources
+              </a>
+            </li>
+          </ng-container>
+  
+          <!-- Common navigation items -->
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/profile" routerLinkActive="active">
+              <i class="bi bi-person-circle"></i> Profil
+            </a>
+          </li>
+          
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <i class="bi bi-gear"></i> Paramètres
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+              <li><a class="dropdown-item" routerLink="/settings">Préférences</a></li>
+              <li><a class="dropdown-item" routerLink="/help">Aide</a></li>
+              <li><hr class="dropdown-divider"></li>
+              <li><a class="dropdown-item text-danger" (click)="logout()">Déconnexion</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>

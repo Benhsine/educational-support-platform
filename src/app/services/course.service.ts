@@ -22,7 +22,7 @@ export class CourseService {
 }
 */
 
-
+/*
 
 @Injectable({
   providedIn: 'root'
@@ -30,5 +30,33 @@ export class CourseService {
 export class CourseService {
   getCourses(): Observable<any[]> {
     return of(MOCK_COURSES);
+  }
+}
+  */
+ // src/app/services/course.service.ts
+
+
+@Injectable({
+  providedIn: 'root',
+})
+export class CourseService {
+  getCourses(): Observable<any[]> {
+    return of(MOCK_COURSES);
+  }
+
+  addResource(courseId: number, type: 'videos' | 'pdfs' | 'quizzes', resource: string): Observable<any> {
+    const course = MOCK_COURSES.find(c => c.id === courseId);
+    if (course) {
+      course.resources[type].push(resource);
+    }
+    return of(course);
+  }
+
+  removeResource(courseId: number, type: 'videos' | 'pdfs' | 'quizzes', resource: string): Observable<any> {
+    const course = MOCK_COURSES.find(c => c.id === courseId);
+    if (course) {
+      course.resources[type] = course.resources[type].filter(r => r !== resource);
+    }
+    return of(course);
   }
 }

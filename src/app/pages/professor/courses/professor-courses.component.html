@@ -1,0 +1,39 @@
+<!-- src/app/pages/professeurs/courses/professor-courses.component.html -->
+<div class="container mt-4">
+  <h1>Gérer les Cours</h1>
+  <div class="card mb-3" *ngFor="let course of courses">
+    <div class="card-body">
+      <h5 class="card-title">{{ course.title }}</h5>
+      <p>Vidéos : {{ course.resources.videos.length }}</p>
+      <p>PDFs : {{ course.resources.pdfs.length }}</p>
+      <p>Quizzes : {{ course.resources.quizzes.length }}</p>
+
+      <!-- Actions -->
+      <button class="btn btn-primary" (click)="openResourceModal(course.id, 'videos')">Ajouter Vidéo</button>
+      <button class="btn btn-primary" (click)="openResourceModal(course.id, 'pdfs')">Ajouter PDF</button>
+      <button class="btn btn-primary" (click)="openResourceModal(course.id, 'quizzes')">Ajouter Quiz</button>
+    </div>
+  </div>
+
+  <!-- Modal (simplifié pour ajouter une ressource) -->
+  <div *ngIf="isModalOpen">
+    <div class="modal-backdrop show"></div>
+    <div class="modal show" tabindex="-1">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Ajouter une {{ resourceType }}</h5>
+            <button type="button" class="btn-close" aria-label="Close" (click)="closeModal()"></button>
+          </div>
+          <div class="modal-body">
+            <input [(ngModel)]="newResource" class="form-control" placeholder="Nom de la ressource" />
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" (click)="closeModal()">Annuler</button>
+            <button type="button" class="btn btn-primary" (click)="addResource()">Ajouter</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

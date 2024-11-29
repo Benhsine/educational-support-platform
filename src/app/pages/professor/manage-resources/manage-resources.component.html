@@ -1,0 +1,29 @@
+<div class="container mt-4">
+  <h1>Gestion des Ressources</h1>
+  <div class="mb-3">
+    <button
+    (click)="addResource({ id: currentDate.now(), type: 'PDF', title: 'New Resource' })">
+    Add Resource
+  </button>
+
+
+  </div>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Titre</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let resource of resources">
+        <td>{{ resource.type }}</td>
+        <td>{{ resource.title }}</td>
+        <td>
+          <button class="btn btn-danger btn-sm" (click)="removeResource(resource.id)">Supprimer</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

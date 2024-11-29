@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { UserProfileService } from '../../services/auth.service';
+import { UserProfileService } from '../../../services/auth.service';
 
 @Component({
   selector: 'app-user-profile',

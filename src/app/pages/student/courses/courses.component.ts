@@ -1,7 +1,7 @@
 // src/app/pages/courses/courses.component.ts
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { CourseService } from '../../services/course.service';
+import { CourseService } from '../../../services/course.service';
 
 @Component({
   selector: 'app-courses',

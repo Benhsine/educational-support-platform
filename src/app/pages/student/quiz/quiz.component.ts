@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { QuizService } from '../../services/quiz.service';
+import { QuizService } from '../../../services/quiz.service';
 
 @Component({
   selector: 'app-quiz',

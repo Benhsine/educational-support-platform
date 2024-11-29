@@ -13,16 +13,16 @@ export class DashboardComponent {
 */
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ProgressService } from '../../services/progress-tracking.service';
+import { ProgressService } from '../../../services/progress-tracking.service';
 
 @Component({
-  selector: 'dashboard',
+  selector: 'professor-dashboard',
   standalone: true,
   imports: [CommonModule],
-  templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.css']
+  templateUrl: './professor-dashboard.component.html',
+  styleUrls: ['./professor-dashboard.component.css']
 })
-export class ProgressComponent implements OnInit {
+export class ProfessorDashboardComponent implements OnInit {
   progressData: any[] = []; // Array to hold progress tracking data
 
   constructor(private progressService: ProgressService) {}
