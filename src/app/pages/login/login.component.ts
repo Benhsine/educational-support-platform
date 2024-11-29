@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -51,16 +52,19 @@ export class LoginComponent {
   username: string = '';
   password: string = '';
 
-  constructor(private router: Router) {}
+  constructor(
+    private authService: AuthService, 
+    private router: Router
+  ) {}
 
   onLogin() {
-    // Simple mock authentication
-    if (this.username === 'student' && this.password === 'student') {
-      localStorage.setItem('user', JSON.stringify({ role: 'student' }));
-      this.router.navigate(['/dashboard']);
-    } else if (this.username === 'professor' && this.password === 'professor') {
-      localStorage.setItem('user', JSON.stringify({ role: 'professor' }));
-      this.router.navigate(['/professor/dashboard']);
+    if (this.authService.login(this.username, this.password)) {
+      const user = this.authService.getCurrentUser();
+      if (user.role === 'student') {
+        this.router.navigate(['/dashboard']);
+      } else if (user.role === 'professor') {
+        this.router.navigate(['/professor/professor-dashboard']);
+      }
     } else {
       alert('Identifiants incorrects');
     }

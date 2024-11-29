@@ -54,18 +54,67 @@ export class AuthService {
 }
 
  */
+// src/app/services/auth.service.ts
 import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
-import { MOCK_USER } from '../mock-data'; // Import mock user data
+import { Router } from '@angular/router';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
-export class UserProfileService {
-  getRole(): string | null {
-    return localStorage.getItem('role'); // Par exemple : "professor" ou "student"
+export class AuthService {
+  private userSubject = new BehaviorSubject<any>(null);
+  user$ = this.userSubject.asObservable();
+
+  constructor(private router: Router) {
+    if (typeof window !== 'undefined') {
+      const storedUser = localStorage.getItem('user');
+      if (storedUser) {
+        this.userSubject.next(JSON.parse(storedUser));
+      }
+    }
   }
-  getUserProfile(): Observable<any> {
-    return of(MOCK_USER); // Return mock user profile data
+
+  login(username: string, password: string): boolean {
+    // Check if running in browser
+    if (typeof window !== 'undefined') {
+      if (username === 'student' && password === 'student') {
+        const user = { role: 'student' };
+        localStorage.setItem('user', JSON.stringify(user));
+        this.userSubject.next(user);
+        return true;
+      } else if (username === 'professor' && password === 'professor') {
+        const user = { role: 'professor' };
+        localStorage.setItem('user', JSON.stringify(user));
+        this.userSubject.next(user);
+        return true;
+      }
+    }
+    return false;
+  }
+
+  logout() {
+    if (typeof window !== 'undefined') {
+      localStorage.removeItem('user');
+      this.userSubject.next(null);
+      this.router.navigate(['/login']);
+    }
+  }
+
+  getCurrentUser() {
+    if (typeof window !== 'undefined') {
+      const storedUser = localStorage.getItem('user');
+      return storedUser ? JSON.parse(storedUser) : null;
+    }
+    return null;
+  }
+
+  isAuthenticated(): boolean {
+    return this.getCurrentUser() !== null;
+  }
+
+  getUserRole(): string | null {
+    const user = this.getCurrentUser();
+    return user ? user.role : null;
   }
 }

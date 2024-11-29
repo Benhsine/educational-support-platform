@@ -1,20 +1,24 @@
-// src/app/shared/navbar/navbar.component.ts
-import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-navbar',
   standalone: true,
-  templateUrl: './navbar.component.html',
-  styleUrls: ['./navbar.component.css'],
-  imports: [RouterModule, CommonModule]
+  imports: [CommonModule, RouterModule],
+  templateUrl: './navbar.component.html'
 })
 export class NavbarComponent {
-  role: string = 'student'; // Example default role
+  role: string | null = null;
 
-  logout(): void {
-    console.log('Utilisateur déconnecté');
-    // Add logout logic here
+  constructor(private authService: AuthService) {
+    // Get the current user's role
+    const user = this.authService.getCurrentUser();
+    this.role = user ? user.role : null;
+  }
+
+  logout() {
+    this.authService.logout();
   }
 }

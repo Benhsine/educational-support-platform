@@ -4,13 +4,13 @@ import { Router } from '@angular/router';
 import { AuthService } from '../../../services/auth.service';
 
 @Component({
-  selector: 'app-user-profile',
+  selector: 'app-professor-profile',
   standalone: true,
   imports: [CommonModule],
-  templateUrl: './user-profile.component.html',
-  styleUrls: ['./user-profile.component.css']
+  templateUrl: './professor-profile.component.html',
+  styleUrls: ['./professor-profile.component.css']
 })
-export class UserProfileComponent implements OnInit {
+export class ProfessorProfileComponent implements OnInit {
   user: any = null;
 
   constructor(

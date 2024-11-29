@@ -76,20 +76,25 @@
           <!-- Student-specific navigation -->
           <ng-container *ngIf="role === 'student'">
             <li class="nav-item">
-              <a class="nav-link" routerLink="/courses" routerLinkActive="active">
+              <a class="nav-link" routerLink="/student/courses" routerLinkActive="active">
                 <i class="bi bi-book"></i> Cours
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" routerLink="/quizzes" routerLinkActive="active">
+              <a class="nav-link" routerLink="/student/quizzes" routerLinkActive="active">
                 <i class="bi bi-question-circle"></i> Quiz
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" routerLink="/dashboard" routerLinkActive="active">
+              <a class="nav-link" routerLink="/student/dashboard" routerLinkActive="active">
                 <i class="bi bi-bar-chart"></i> Tableau de Bord
               </a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link" routerLink="/student/profile" routerLinkActive="active">
+                  <i class="bi bi-person-circle"></i> Profil
+                </a>
+              </li>
           </ng-container>
   
           <!-- Professor-specific navigation -->
@@ -114,23 +119,17 @@
                 <i class="bi bi-folder"></i> Ressources
               </a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link" routerLink="/professor/professor-profile" routerLinkActive="active">
+                  <i class="bi bi-person-circle"></i> Profil
+                </a>
+              </li>
           </ng-container>
   
           <!-- Common navigation items -->
-          <li class="nav-item">
-            <a class="nav-link" routerLink="/profile" routerLinkActive="active">
-              <i class="bi bi-person-circle"></i> Profil
-            </a>
-          </li>
           
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              <i class="bi bi-gear"></i> Paramètres
-            </a>
             <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-              <li><a class="dropdown-item" routerLink="/settings">Préférences</a></li>
-              <li><a class="dropdown-item" routerLink="/help">Aide</a></li>
-              <li><hr class="dropdown-divider"></li>
               <li><a class="dropdown-item text-danger" (click)="logout()">Déconnexion</a></li>
             </ul>
           </li>

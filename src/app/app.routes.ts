@@ -29,17 +29,23 @@ import { ManageResourcesComponent } from './pages/professor/manage-resources/man
 import { AuthGuard } from './guards/auth.guard';
 import { RoleGuard } from './guards/role.guard';
 import { LoginComponent } from './pages/login/login.component';
+import { ProfessorProfileComponent } from './pages/professor/profile/professor-profile.component';
 
 export const routes: Routes = [
   // Routes accessibles à tous
   { path: '', component: HomeComponent },
   { path: 'login', component: LoginComponent },
   // Routes pour les étudiants
+  {path: 'student',
+    canActivate: [AuthGuard, RoleGuard],
+    data: { role: 'student' },
+    children:[
+  { path: '', redirectTo: 'courses', pathMatch: 'full' },
   { path: 'courses', component: CoursesComponent, canActivate: [AuthGuard] },
   { path: 'quizzes', component: QuizComponent, canActivate: [AuthGuard] },
   { path: 'profile', component: UserProfileComponent, canActivate: [AuthGuard] },
   { path: 'dashboard', component: ProgressComponent, canActivate: [AuthGuard] },
-
+]},
   // Routes pour les professeurs (protégées par un rôle spécifique)
   {
     path: 'professor',
@@ -51,6 +57,7 @@ export const routes: Routes = [
       { path: 'manage-courses', component: ManageCoursesComponent },
       { path: 'manage-quizzes', component: ManageQuizzesComponent },
       { path: 'manage-resources', component: ManageResourcesComponent },
+      { path: 'professor-profile', component: ProfessorProfileComponent, canActivate: [AuthGuard] },
     ]
   },
 
