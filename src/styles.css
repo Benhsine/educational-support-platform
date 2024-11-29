@@ -1,9 +1,36 @@
 /* Global styles */
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
-  }
+
   
   .container {
     max-width: 1200px;
   }
+
+  html, body {
+    height: 100%; /* Full height for the viewport */
+    margin: 0;    /* Remove default margins */
+    display: flex;
+    flex-direction: column;
+    font-family: Arial, sans-serif;
+    background-color: #f7f5f5;
+  }
+  
+  main {
+    flex-grow: 1; /* Make the main content expand to fill available space */
+  }
+  
+  footer {
+    background-color: #343a40;
+    color: white;
+    text-align: center;
+    padding: 1rem 0;
+  }
+  .navbar-dark .nav-link {
+    color: #ffffff !important; /* Couleur blanche pour le texte */
+  }
+  
+  .navbar-dark .nav-link:hover, 
+  .navbar-dark .nav-link.active {
+    color: #d1d1d1 !important; /* Couleur légèrement grise au survol ou lorsqu'il est actif */
+  }
+  
+  

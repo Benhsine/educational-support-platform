@@ -1,4 +1,5 @@
 // src/app/services/auth.service.ts
+/*
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, BehaviorSubject } from 'rxjs';
@@ -23,5 +24,18 @@ export class AuthService {
 
   logout(): void {
     this.currentUserSubject.next(null);
+  }
+}
+  */
+import { Injectable } from '@angular/core';
+import { Observable, of } from 'rxjs';
+import { MOCK_USER } from '../mock-data'; // Import mock user data
+
+@Injectable({
+  providedIn: 'root'
+})
+export class UserProfileService {
+  getUserProfile(): Observable<any> {
+    return of(MOCK_USER); // Return mock user profile data
   }
 }

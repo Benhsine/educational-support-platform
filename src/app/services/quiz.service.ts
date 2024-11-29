@@ -1,23 +1,12 @@
-// src/app/services/quiz.service.ts
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
+import { MOCK_QUIZ } from '../mock-data'; // Import mock quiz data
 
 @Injectable({
   providedIn: 'root'
 })
 export class QuizService {
-  constructor(private http: HttpClient) { }
-
-  getQuizzes(): Observable<any[]> {
-    return this.http.get<any[]>('/api/quizzes');
-  }
-
-  startQuiz(quizId: string): Observable<any> {
-    return this.http.get(`/api/quizzes/${quizId}/start`);
-  }
-
-  submitQuiz(quizResults: any): Observable<any> {
-    return this.http.post('/api/quizzes/submit', quizResults);
+  getQuiz(): Observable<any> {
+    return of(MOCK_QUIZ); // Return mock quiz data
   }
 }

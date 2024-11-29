@@ -1,25 +1,61 @@
 <!-- src/app/shared/navbar/navbar.component.html -->
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary shadow-sm">
     <div class="container">
-      <a class="navbar-brand" routerLink="/">Soutien Scolaire</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <!-- Logo et titre -->
+      <a class="navbar-brand fw-bold" routerLink="/">
+        Soutien Scolaire
+      </a>
+  
+      <!-- Bouton pour navigation mobile -->
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
+  
+      <!-- Liens de navigation -->
       <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav">
+        <ul class="navbar-nav ms-auto">
+          <!-- Lien pour les cours -->
           <li class="nav-item">
-            <a class="nav-link" routerLink="/courses" routerLinkActive="active">Cours</a>
+            <a class="nav-link" routerLink="/courses" routerLinkActive="active">
+              <i class="bi bi-book"></i> Cours
+            </a>
           </li>
+  
+          <!-- Lien pour les quiz -->
           <li class="nav-item">
-            <a class="nav-link" routerLink="/quizzes" routerLinkActive="active">Quiz</a>
+            <a class="nav-link" routerLink="/quizzes" routerLinkActive="active">
+              <i class="bi bi-question-circle"></i> Quiz
+            </a>
           </li>
+  
+          <!-- Lien pour le tableau de bord -->
           <li class="nav-item">
-            <a class="nav-link" routerLink="/dashboard" routerLinkActive="active">Tableau de Bord</a>
+            <a class="nav-link" routerLink="/dashboard" routerLinkActive="active">
+              <i class="bi bi-bar-chart"></i> Tableau de Bord
+            </a>
           </li>
+  
+          <!-- Lien pour le profil -->
           <li class="nav-item">
-            <a class="nav-link" routerLink="/profile" routerLinkActive="active">Profil</a>
+            <a class="nav-link" routerLink="/profile" routerLinkActive="active">
+              <i class="bi bi-person-circle"></i> Profil
+            </a>
+          </li>
+  
+          <!-- Menu déroulant (exemple pour des paramètres ou autres liens) -->
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <i class="bi bi-gear"></i> Paramètres
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+              <li><a class="dropdown-item" routerLink="/settings">Préférences</a></li>
+              <li><a class="dropdown-item" routerLink="/help">Aide</a></li>
+              <li><hr class="dropdown-divider"></li>
+              <li><a class="dropdown-item text-danger" href="#">Déconnexion</a></li>
+            </ul>
           </li>
         </ul>
       </div>
     </div>
   </nav>
+  

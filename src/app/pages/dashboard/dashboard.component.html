@@ -1,1 +1,31 @@
-<p>dashboard works!</p>
+<div class="container mt-4">
+    <h1 class="mb-4">Suivi de Progression</h1>
+  
+    <div class="row">
+      <div *ngFor="let progress of progressData" class="col-md-6 mb-4">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">{{ progress.courseTitle || 'Cours' }}</h5>
+            <p class="card-text">Niveau : {{ progress.level || 'Non défini' }}</p>
+            <div class="progress mb-3">
+              <div 
+                class="progress-bar" 
+                role="progressbar" 
+                [style.width]="progress.completion + '%'" 
+                [attr.aria-valuenow]="progress.completion" 
+                aria-valuemin="0" 
+                aria-valuemax="100"
+              >
+                {{ progress.completion }}%
+              </div>
+            </div>
+            <button class="btn btn-outline-primary btn-sm">Détails</button>
+          </div>
+        </div>
+      </div>
+      <div *ngIf="progressData.length === 0" class="col-12 text-center">
+        <p>Aucune progression enregistrée pour le moment</p>
+      </div>
+    </div>
+  </div>
+  

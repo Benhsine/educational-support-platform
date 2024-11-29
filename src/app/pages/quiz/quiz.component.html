@@ -1,1 +1,37 @@
-<p>quiz works!</p>
+<div class="container mt-4">
+    <h1 class="mb-4">Quiz</h1>
+  
+    <div class="row">
+      <div *ngFor="let question of quiz.questions; let i = index" class="col-12 mb-4">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Question {{ i + 1 }}</h5>
+            <p class="card-text">{{ question.text || 'Texte de la question' }}</p>
+            <ul class="list-group">
+              <li *ngFor="let option of question.options" class="list-group-item">
+                <div class="form-check">
+                  <input 
+                    class="form-check-input" 
+                    type="radio" 
+                    [name]="'question-' + i" 
+                    [value]="option" 
+                    (change)="selectOption(i, option)" 
+                  />
+                  <label class="form-check-label">
+                    {{ option || 'Option' }}
+                  </label>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div *ngIf="quiz.questions.length === 0" class="col-12 text-center">
+        <p>Aucun quiz disponible actuellement</p>
+      </div>
+    </div>
+    <div class="mt-4 text-center">
+      <button class="btn btn-success" (click)="submitQuiz()">Soumettre</button>
+    </div>
+  </div>
+  
