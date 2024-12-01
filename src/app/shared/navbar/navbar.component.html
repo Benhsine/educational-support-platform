@@ -63,84 +63,140 @@
 -->
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary shadow-sm">
     <div class="container">
-      <a class="navbar-brand fw-bold" routerLink="/">
-        Soutien Scolaire
-      </a>
-      
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <!-- Brand -->
+      <a class="navbar-brand fw-bold" routerLink="/">Soutien Scolaire</a>
+  
+      <!-- Toggler for Mobile -->
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#navbarNav"
+        aria-controls="navbarNav"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
         <span class="navbar-toggler-icon"></span>
       </button>
-      
+  
+      <!-- Navbar Links -->
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav ms-auto">
-          <!-- Student-specific navigation -->
+          <!-- Student-Specific Links -->
           <ng-container *ngIf="role === 'student'">
             <li class="nav-item">
-              <a class="nav-link" routerLink="/student/courses" routerLinkActive="active">
+              <a
+                class="nav-link"
+                routerLink="/student/courses"
+                routerLinkActive="active"
+              >
                 <i class="bi bi-book"></i> Cours
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" routerLink="/student/quizzes" routerLinkActive="active">
+              <a
+                class="nav-link"
+                routerLink="/student/quizzes"
+                routerLinkActive="active"
+              >
                 <i class="bi bi-question-circle"></i> Quiz
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" routerLink="/student/dashboard" routerLinkActive="active">
+              <a
+                class="nav-link"
+                routerLink="/student/dashboard"
+                routerLinkActive="active"
+              >
                 <i class="bi bi-bar-chart"></i> Tableau de Bord
               </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" routerLink="/student/profile" routerLinkActive="active">
-                  <i class="bi bi-person-circle"></i> Profil
-                </a>
-              </li>
+              <a
+                class="nav-link"
+                routerLink="/student/profile"
+                routerLinkActive="active"
+              >
+                <i class="bi bi-person-circle"></i> Profil
+              </a>
+            </li>
           </ng-container>
   
-          <!-- Professor-specific navigation -->
+          <!-- Professor-Specific Links -->
           <ng-container *ngIf="role === 'professor'">
             <li class="nav-item">
-              <a class="nav-link" routerLink="/professor/manage-courses" routerLinkActive="active">
+              <a
+                class="nav-link"
+                routerLink="/professor/manage-courses"
+                routerLinkActive="active"
+              >
                 <i class="bi bi-book-half"></i> Gérer Cours
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" routerLink="/professor/manage-quizzes" routerLinkActive="active">
+              <a
+                class="nav-link"
+                routerLink="/professor/manage-quizzes"
+                routerLinkActive="active"
+              >
                 <i class="bi bi-clipboard-check"></i> Gérer Quiz
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" routerLink="/professor/professor-dashboard" routerLinkActive="active">
+              <a
+                class="nav-link"
+                routerLink="/professor/professor-dashboard"
+                routerLinkActive="active"
+              >
                 <i class="bi bi-bar-chart"></i> Tableau de Bord
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" routerLink="/professor/manage-resources" routerLinkActive="active">
+              <a
+                class="nav-link"
+                routerLink="/professor/manage-resources"
+                routerLinkActive="active"
+              >
                 <i class="bi bi-folder"></i> Ressources
               </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" routerLink="/professor/professor-profile" routerLinkActive="active">
-                  <i class="bi bi-person-circle"></i> Profil
-                </a>
-              </li>
+              <a
+                class="nav-link"
+                routerLink="/professor/professor-profile"
+                routerLinkActive="active"
+              >
+                <i class="bi bi-person-circle"></i> Profil
+              </a>
+            </li>
           </ng-container>
-           <!-- Show login if not logged in -->
-        <ng-container *ngIf="!isLoggedIn">
+  
+          <!-- Show Login if not Logged In -->
+          <ng-container *ngIf="!isLoggedIn">
             <li class="nav-item">
-              <a class="nav-link" routerLink="/login" routerLinkActive="active">
+              <a
+                class="nav-link"
+                routerLink="/login"
+                routerLinkActive="active"
+              >
                 <i class="bi bi-box-arrow-in-right"></i> Login
               </a>
             </li>
           </ng-container>
-          <!-- Common navigation items -->
-          
-          <li class="nav-item dropdown">
-            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-              <li><a class="dropdown-item text-danger" (click)="logout()">Déconnexion</a></li>
-            </ul>
-          </li>
+  
+          <!-- Show Logout if Logged In -->
+          <ng-container *ngIf="isLoggedIn">
+            <li class="nav-item">
+              <a
+                class="nav-link text-danger"
+                (click)="logout()"
+              >
+                <i class="bi bi-box-arrow-right"></i> Déconnexion
+              </a>
+            </li>
+          </ng-container>
         </ul>
       </div>
     </div>
   </nav>
+  
